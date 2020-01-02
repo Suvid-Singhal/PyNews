@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>PyNews | Your One Stop for Tech News</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    {% include 'includes/_navbar.html' %}
+    {% block body %}{% endblock %}
+    <footer style="background-color: black">
+    <div class="footer-copyright text-center py-3" style="color: white">Powered by
+    <a href="https://newsapi.org/"> NewsAPI.org</a>
+    </div>
+  </footer>
+    <script type="text/javascript" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
