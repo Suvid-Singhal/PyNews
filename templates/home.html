@@ -1,11 +1,27 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-  <h1 style="text-align: center">Latest Tech News</h1>
-  <h2 style="text-align: center; color: gray;">Search keywords: Linux, Open-Source and Android</h2>
-  <ul class="list-group">
+  <h1 style="text-align: center;margin-top:5%;">Latest Tech News</h1>
+  <h2 style="text-align: center; color: gray;">Search keywords: {% for your_list_element in result %} {{ your_list_element }}{% if not loop.last %}, {% endif %}{% endfor %}</h2>
+  <form action="/" method="post" class="form-inline justify-content-center">
+    <label for="keywords">Enter Keywords (Separated by comma): </label>
+    <input type="text" name="keywords" class="form-control padded" required pattern=".*\S.*"><br><br>
+    <input type="submit" value="Get News!" class="btn btn-primary padded">
+  </form>
+  <!--<ul class="list-group">
     {% for news in News %}
       <li class="list-group-item"><a href={{news['url']}}><img src={{news['urlToImage']}} width="100px"><span style="margin-left: 50px">{{news['title']}}</span></a></li>
     {% endfor %}
-  </ul>
+  </ul>-->
+  <div class="card-columns">
+    {% for news in News %}
+      <div class="card">
+        <img class="card-img-top" src={{news['urlToImage']}} style="width:100%" onerror="this.src='https://i.ibb.co/09b38dZ/image-not-found.jpg';">
+        <div class="card-body">
+          <h4 class="card-title">{{news['title']}}</h4>
+          <a href={{news['url']}} target="_blank" class="btn btn-primary stretched-link hover-effects">Read More</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}
